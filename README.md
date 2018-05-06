@@ -2,6 +2,11 @@
 
 Micro-library for treating errno codes more safely from the JVM.
 
+## Usage
+
+Simply read the
+[javadoc](https://dvlopt.github.io/doc/java/linux-errno/io/dvlopt/linux/errno/Errno.html).
+
 ## License
 
 MIT License
