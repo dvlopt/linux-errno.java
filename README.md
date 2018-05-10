@@ -4,6 +4,9 @@
 ![Download](https://api.bintray.com/packages/dvlopt/maven/linux-errno/images/download.svg)
 ](https://bintray.com/dvlopt/maven/linux-errno/_latestVersion)
 
+[![Maven
+Central](https://maven-badges.herokuapp.com/maven-central/io.dvlopt/linux-errno/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.dvlopt/linux-errno)
+
 Micro-library for treating errno codes more safely from the JVM.
 
 ## Usage
