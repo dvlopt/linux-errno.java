@@ -1,5 +1,9 @@
 # linux-errno
 
+[
+![Download](https://api.bintray.com/packages/dvlopt/maven/linux-errno/images/download.svg)
+](https://bintray.com/dvlopt/maven/linux-errno/_latestVersion)
+
 Micro-library for treating errno codes more safely from the JVM.
 
 ## Usage
