@@ -10,7 +10,7 @@ plugins {
 
 def globalName    = 'linux-errno'
 
-def globalVersion = '0.0.2'
+def globalVersion = '1.0.0'
 
 def globalDesc    = 'Java utilities for errno'
 
