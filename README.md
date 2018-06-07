@@ -7,7 +7,7 @@
 [![Maven
 Central](https://maven-badges.herokuapp.com/maven-central/io.dvlopt/linux-errno/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.dvlopt/linux-errno)
 
-Micro-library for treating errno codes more safely from the JVM.
+Micro-library for using errno codes from the JVM.
 
 ## Usage
 
