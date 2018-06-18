@@ -12,7 +12,7 @@ Micro-library for using errno codes from the JVM.
 ## Usage
 
 Simply read the
-[javadoc](https://dvlopt.github.io/doc/java/linux-errno/io/dvlopt/linux/errno/Errno.html).
+[javadoc](https://dvlopt.github.io/doc/java/io.dvlopt/linux-errno/io/dvlopt/linux/errno/Errno.html).
 
 ## License
 
