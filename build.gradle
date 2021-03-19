@@ -1,8 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'com.github.johnrengelman.shadow' version '2.0.3'
-    id 'com.jfrog.bintray' version '1.7.3'
+    id "signing"
 }
 
 
@@ -10,104 +9,86 @@ plugins {
 
 def globalName    = 'linux-errno'
 
-def globalVersion = '1.0.0'
+def globalVersion = '1.0.2'
 
 def globalDesc    = 'Java utilities for errno'
 
-def globalUrl     = 'https://github.com/dvlopt/linux-errno.java'
+def globalUrl     = 'https://github.com/helins/linux-errno.java'
 
 
-group   = "io.dvlopt"
+group   = "io.helins"
 version = globalVersion
 
 
 
-
-dependencies {
+java {
+    withJavadocJar()
+    withSourcesJar()
 }
 
 
 
 
-repositories {
-}
-
-
-
-
-task sourcesJar( type:      Jar     ,
-                 dependsOn: classes ) {
-
-    classifier = 'sources'
-    from sourceSets.main.allSource
-}
-
-
-
-
-task javadocJar( type:      Jar     ,
-                 dependsOn: javadoc ) {
-
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-
-
-
-def pomConfig = {
-
-    licenses {
-        license {
-            name 'Apache License, Version 2.0'
-            url  'http://www.apache.org/licenses/LICENSE-2.0'
-        }
-    }
-
-
-    developers {
-        developer {
-            name            'Adam Helinski'
-            email           'adam@dvlopt.io'
-            organization    'Dvlopt'
-            organizationUrl 'http://dvlopt.io'
-        }
-    }
-
-
-    scm {
-        connection          'scm:git:git://github.com/dvlopt/linux-errno.java.git'
-        developerConnection 'scm:git:ssh://github.com/dvlopt/linux-errno.java.git'
-        url                 globalUrl
+tasks.jar {
+    manifest {
+        attributes("Automatic-Module-Name": "io.helins.linux.errno")
     }
 }
 
 
+
+
+// Publishing to Maven
 
 
 publishing {
+
+
     publications {
-        mavenJava(MavenPublication) {
+        LibMaven( MavenPublication ) {
 
             from components.java
 
-            artifact sourcesJar
-            artifact javadocJar
+
+            pom {
+
+
+                name        = globalName
+                description = globalDesc
+                url         = globalUrl
+
+                licenses {
+                     license {
+                         name = "Mozilla Public License Version 2.0"
+                         url  = "https://www.mozilla.org/en-US/MPL/2.0/"
+                     }
+                }
+
+
+                developers {
+                    developer {
+                        name            = "Adam Helinski"
+                        email           = "adam@helins.io"
+                        organizationUrl = "http://www.helins.io"
+                    }
+                }
             
-            pom.withXml {
-                def root = asNode()
-
-                root.appendNode( 'name'     ,
-                                 globalName )
-
-                root.appendNode( 'description' ,
-                                 globalDesc    )
-
-                root.appendNode( 'url'     ,
-                                 globalUrl )
-
-                root.children().last() + pomConfig
+            
+                scm {
+                    connection          = "scm:git:git://github.com/helins/linux-errno.java.git"
+                    developerConnection = "scm:git:ssh://github.com/helins/linux-errno.java.git"
+                    url                 = globalUrl
+                }
             }
+        }
+    }
+
+
+    repositories {
+        maven {
+            credentials( PasswordCredentials )
+            name = "sonatype"
+            url  = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
         }
     }
 }
@@ -115,39 +96,6 @@ publishing {
 
 
 
-bintray {
-    user = project.hasProperty( 'bintrayUser' ) ? project.property( 'bintrayUser' )
-                                                : System.getenv( 'BINTRAY_USER' )
-    key  = project.hasProperty( 'bintrayKey' ) ? project.property( 'bintrayKey' ) 
-                                               : System.getenv( 'BINTRAY_KEY' )
-
-    publications = [ 'mavenJava' ]
-
-    pkg {
-        repo                  = 'maven'
-        name                  = globalName
-        desc                  = globalDesc
-        licenses              = [ 'Apache-2.0' ]
-        websiteUrl            = globalUrl
-        vcsUrl                = 'https://github.com/dvlopt/linux-errno.java.git'
-        labels                = [ 'java', 'linux', 'errno' ]
-        publicDownloadNumbers = true
-        
-        version {
-            name   = globalVersion
-            vcsTag = globalVersion
-
-            gpg {
-                sign = true
-            }
-        }
-    }
-}
-
-
-
-
-if ( JavaVersion.current() != JavaVersion.VERSION_1_8 ) {
-
-    throw new GradleException( "Must be used with Java 8" )
+signing {
+    sign publishing.publications.LibMaven
 }
