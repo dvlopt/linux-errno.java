@@ -1,18 +1,18 @@
-# linux-errno
-
-[
-![Download](https://api.bintray.com/packages/dvlopt/maven/linux-errno/images/download.svg)
-](https://bintray.com/dvlopt/maven/linux-errno/_latestVersion)
+# Linux-Errno
 
 [![Maven
-Central](https://maven-badges.herokuapp.com/maven-central/io.dvlopt/linux-errno/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.dvlopt/linux-errno)
+Central](https://maven-badges.herokuapp.com/maven-central/io.helins/linux-errno/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.helins/linux-errno)
+
+[![Javadoc](https://javadoc.io/badge2/io.helins/linux-errno/javadoc.svg)](https://javadoc.io/doc/io.helins/linux-errno)
 
 Micro-library for using errno codes from the JVM.
+
 
 ## Usage
 
 Simply read the
-[javadoc](https://dvlopt.github.io/doc/java/io.dvlopt/linux-errno/io/dvlopt/linux/errno/Errno.html).
+[javadoc](https://javadoc.io/doc/io.helins/linux-errno).
+
 
 ## License
 

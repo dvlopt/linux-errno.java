@@ -1,19 +1,19 @@
 plugins {
-    id 'java-library'
-    id 'maven-publish'
+    id "java-library"
+    id "maven-publish"
     id "signing"
 }
 
 
 
 
-def globalName    = 'linux-errno'
+def globalName    = "linux-errno"
 
-def globalVersion = '1.0.2'
+def globalVersion = "1.0.2"
 
-def globalDesc    = 'Java utilities for errno'
+def globalDesc    = "Java utilities for errno"
 
-def globalUrl     = 'https://github.com/helins/linux-errno.java'
+def globalUrl     = "https://github.com/helins/linux-errno.java"
 
 
 group   = "io.helins"
